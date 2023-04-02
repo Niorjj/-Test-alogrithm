@@ -1,0 +1,16 @@
+void fun(int **Mat, int N) {
+    int top = 0, bottom = N - 1, left = 0, right = N - 1;
+    while (top < bottom && left < right) {
+        for (int i = 0; i < right - left; i++) {
+            int temp1 = Mat[top][left + i], temp2 = Mat[left + i][N - 1 - top];
+            Mat[top][left + i] = Mat[bottom - i][left];
+            Mat[left + i][N - 1 - top] = temp1;
+            Mat[bottom - i][left] = Mat[right][N - 1 - (left + i)];
+            Mat[right][N - 1 - (left + i)] = temp2;
+        }
+        top++;
+        bottom--;
+        left++;
+        right--;
+    }
+}
