@@ -1,20 +1,23 @@
 Position BinarySearch(List L,ElementType X){
-    int Left,Right,Mid;
+    int Left,Right,Mid;//左边界 右边界 中点
+    //判断空表
     if(L == NULL){
         return NotFound;
     }
+    //为左右边界赋值
     Left = 1;
     Right = L->Last;
     Mid = (Left + Right)/2;
+    //左边界在右边界左边执行循环
     while(Left <= Right){
-        if(X > L->Data[Mid]){
+        if(X > L->Data[Mid]){       //X大于中点
             Left = Mid + 1;
-        }else if(X < L->Data[Mid]){
+        }else if(X < L->Data[Mid]){      //X小于中点
             Right = Mid - 1;
-        }else if(X == L->Data[Mid]) {
+        }else if(X == L->Data[Mid]) {      //X等于中点
             return Mid;
         }
-        Mid = (Left + Right)/2;
+        Mid = (Left + Right)/2;      
         
     }
     return NotFound;
